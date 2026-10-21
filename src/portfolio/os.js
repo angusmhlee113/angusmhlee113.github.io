@@ -89,7 +89,8 @@ function experienceApp() {
         <li>
           <div class="tl-head"><h3>${esc(x.role)}</h3><span class="muted mono">${esc(x.period)}</span></div>
           <p class="tl-company">${esc(x.company)}</p>
-          <ul>${x.points.map((pt) => `<li>${esc(pt)}</li>`).join('')}</ul>
+          ${x.summary ? `<p class="tl-summary">${esc(x.summary)}</p>` : ''}
+          ${x.points.length ? `<ul>${x.points.map((pt) => `<li>${esc(pt)}</li>`).join('')}</ul>` : ''}
         </li>`).join('')}
     </ol>`;
 }
