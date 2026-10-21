@@ -13,8 +13,7 @@ export const profile = {
   avatar: '',
   // Optional: a PDF résumé, same rules as avatar. Adds a "Resume.pdf" icon when set.
   resumeUrl: '',
-  // TODO: add the address you want public. The Contact window's email button uses it.
-  email: 'hello@example.com',
+  email: 'angusmhlee.ai@gmail.com',
 
   about: [
     "Hey, I'm Angus. This is a little world for the things I make, the ideas I explore, and whatever comes next.",
