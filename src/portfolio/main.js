@@ -82,6 +82,16 @@ export function initPortfolio() {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#06070d');
     const camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.01, 40);
+    // Portrait phones: widen the vertical FOV so at least ~52° stays visible
+    // horizontally, otherwise the desk and monitor fall off the sides.
+    function fitCamera() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      const minHFov = THREE.MathUtils.degToRad(52);
+      const vFov = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(minHFov / 2) / camera.aspect));
+      camera.fov = THREE.MathUtils.clamp(vFov, 62, 95);
+      camera.updateProjectionMatrix();
+    }
+    fitCamera();
 
     const screen = new BootScreen(profile);
     screen.onDesktop = () => sfx.chime();
@@ -295,8 +305,7 @@ export function initPortfolio() {
       else if (hit === 'power' || hit === 'screen') reboot();
     });
     window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
+      fitCamera();
       renderer.setSize(window.innerWidth, window.innerHeight);
       if (state === 'os') fillPosition(pos);
     });

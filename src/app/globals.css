@@ -52,16 +52,18 @@ svg { flex-shrink: 0; }
 .gate-kicker { font-family: var(--mono); color: var(--accent-2); letter-spacing: 0.25em; text-transform: uppercase; font-size: 12px; margin: 0; }
 .gate h1 {
   font-size: clamp(48px, 11vw, 104px);
-  margin: 10px 0 6px;
+  margin: 10px 0 0;
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
+  /* Gradient text is clipped to the box; leave room for descenders like "g". */
+  padding-bottom: 0.18em;
   background: linear-gradient(120deg, #fff 20%, #b9a8ff 60%, #7ce7ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-.gate-role { color: var(--muted); font-size: 18px; margin: 0 0 36px; }
+.gate-role { color: var(--muted); font-size: 18px; margin: 10px 0 36px; }
 .btn-enter {
   display: block;
   margin: 0 auto 14px;
